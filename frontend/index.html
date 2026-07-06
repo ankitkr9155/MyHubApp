@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div id="login-screen" class="auth-box">
+            <h2>Login to Hub</h2>
+            <input type="text" id="login-uid" placeholder="User ID">
+            <input type="password" id="login-pass" placeholder="Password">
+            <div class="otp-group">
+                <input type="text" id="login-otp" placeholder="Enter OTP">
+                <button onclick="sendOTP('login')">Send OTP</button>
+            </div>
+            <button onclick="handleLogin()">Login</button>
+            <span class="toggle-link" onclick="switchScreen('signup-screen')">Create Account</span>
+        </div>
+        <div id="drawing-workspace" class="hidden">
+    <h2>Live Canvas</h2>
+    
+    <div class="controls">
+        <input type="color" id="brush-color">
+        <input type="number" id="brush-size" value="5" min="1" max="20">
+        
+        <button onclick="downloadBoard()" style="background: #28a745; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">
+            Download Board
+        </button>
+        
+        <button onclick="switchScreen('dashboard-screen')">Back to Dashboard</button>
+    </div>
+
+    <canvas id="paintCanvas" width="800" height="500" style="border:1px solid #000;"></canvas>
+</div>
+
+        <div id="signup-screen" class="auth-box hidden">
+            <h2>Create Account</h2>
+            <input type="text" id="sign-name" placeholder="Full Name">
+            <input type="text" id="sign-uid" placeholder="Desired User ID">
+            <input type="email" id="sign-email" placeholder="Email Address">
+            <input type="text" id="sign-phone" placeholder="Contact Number">
+            <input type="password" id="sign-pass" placeholder="Password">
+            <div class="otp-group">
+                <input type="text" id="sign-otp" placeholder="Enter OTP">
+                <button onclick="sendOTP('signup')">Send OTP</button>
+            </div>
+            <button onclick="handleSignup()">Register & Login</button>
+            <span class="toggle-link" onclick="switchScreen('login-screen')">Back to Login</span>
+        </div>
+
+        <div id="dashboard-screen" class="hidden">
+            <h2>Welcome <span id="user-display"></span>!</h2>
+            <div class="grid">
+                <div class="mode-card" onclick="openWorkspace('code-workspace')">💻 Code</div>
+                <div class="mode-card" onclick="openWorkspace('drawing-workspace')">🎨 Draw</div>
+                <div class="mode-card" onclick="openWorkspace('text-workspace')">📝 Text</div>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div id="code-workspace" class="hidden">
+            <div class="workspace-header"><h3>Code Editor</h3><button onclick="switchScreen('dashboard-screen')">Back</button></div>
+            <textarea class="code-area" placeholder="// Start coding..."></textarea>
+        </div>
+
+        <div id="drawing-workspace" class="hidden">
+            <div class="workspace-header"><h3>Drawing Board</h3><button onclick="switchScreen('dashboard-screen')">Back</button></div>
+            <canvas id="paintCanvas" width="800" height="400"></canvas>
+            <div class="canvas-tools">
+                <input type="color" id="brush-color" value="#cba6f7">
+                <input type="range" id="brush-size" min="1" max="20" value="5">
+                <button onclick="clearCanvas()">Clear</button>
+            </div>
+        </div>
+
+        <div id="text-workspace" class="hidden">
+            <div class="workspace-header"><h3>Text Editor</h3><button onclick="switchScreen('dashboard-screen')">Back</button></div>
+            <div class="text-editor" contenteditable="true">Write here...</div>
+        </div>
+
+    </div>
+
+   
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+     <script src="script.js"></script>
+</body>
+</html>
