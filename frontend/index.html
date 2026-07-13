@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis AI Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        AI Chat Bot - Jarvis
+    </div>
+    
+    <div class="chat-box" id="chatBox">
+        <div class="message ai">
+    
+
+</div>
+        <!-- Initial AI Message -->
+        <div class="message ai">
+            <!-- COMMENT: Yahan AI profile image ka path dale (optional) -->
+            <img src="Ai.jpeg" class="ai-profile-img">
+            <div class="bubble">Hello! I am Jarvis. How can I assist you today? ✨</div>
+        </div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Message... (Enter to send)">
+        <button onclick="sendMessage()">
+            <!-- Send Icon SVG -->
+            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="white" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        </button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
